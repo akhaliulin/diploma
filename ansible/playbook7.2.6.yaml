@@ -1,0 +1,10 @@
+---
+
+- name: Change motd
+  hosts: webservers
+  become: yes
+  tasks:
+  - name: Change
+    copy:
+      content: Hi! My name is '{{ ansible_facts["hostname"] }}', my IP '{{ ansible_facts["enp0s3"]["ipv4"]["address"] }}'. Have a good day
+      dest: /etc/motd

@@ -1,0 +1,15 @@
+---
+- name: Playbook 1
+  hosts: webservers
+  tasks:
+
+  - name: create directory
+    file:
+      dest: /tmp/kafka-3.2.0
+      state: directory
+
+  - name: unpacking
+    unarchive:
+      src: https://dlcdn.apache.org/kafka/3.2.0/kafka-3.2.0-src.tgz
+      dest: /tmp/kafka-3.2.0
+      remote_src: yes

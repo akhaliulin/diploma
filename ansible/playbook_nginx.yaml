@@ -1,0 +1,12 @@
+- hosts: 62.84.116.251 
+  remote_user: user
+  become: yes
+  tasks:
+  - name: apt install
+    apt:
+      name: nginx
+
+  - name:
+    service:
+      name: nginx
+      state: started

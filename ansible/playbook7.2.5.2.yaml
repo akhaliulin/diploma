@@ -1,0 +1,15 @@
+---
+
+- name: Playbook 2
+  hosts: webservers
+  become: yes
+  tasks:
+  - name: apt install
+    apt:
+      name: tuned
+
+  - name:
+    service:
+      name: tuned
+      state: started
+      enabled: yes

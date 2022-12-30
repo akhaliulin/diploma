@@ -1,0 +1,4 @@
+Server's CPU : "{{ ansible_facts['processor'] }}"
+Server's RAM : "{{ ansible_facts['memtotal_mb'] }}"
+Server's HDD size : "{{ ansible_facts['mounts'] }}"
+Server's IP address : "{{ ansible_facts['default_ipv4']['address'] }}"

@@ -1,0 +1,12 @@
+---
+
+- name: Change motd
+  hosts: webservers
+  become: yes
+  vars:
+    some_text: 'Hallo Spaceboy'
+  tasks:
+  - name: Change
+    copy:
+      content: '{{ some_text }}'
+      dest: /etc/motd

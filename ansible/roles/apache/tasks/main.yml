@@ -1,0 +1,17 @@
+---
+# tasks file for apache
+- name: install apache
+  apt:
+    pkg:
+    - apache2
+    - ufw
+
+- name: Create index.html
+  template:
+    src: index.j2
+    dest: "{{ dest_folder }}"
+  notify: restart apache + enable
+
+- name: Check
+  uri:
+    url: "http://{{ ansible_facts['default_ipv4']['address'] }}"

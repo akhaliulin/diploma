@@ -1,0 +1,4 @@
+---
+# defaults file for apache
+dest_folder: /var/www/html/index.html
+http_port: 80
