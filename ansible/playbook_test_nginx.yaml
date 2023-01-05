@@ -1,0 +1,23 @@
+---
+
+- name: Install Nginx
+  hosts: nginx_servers
+  become: yes
+
+  tasks:
+
+  - name: Install Epel-release
+    yum:
+      name: epel-release
+      state: present
+
+  - name: Install Nginx by yum
+    yum:
+      name: nginx
+      state: present
+
+  - name: Start and enable Nginx
+    service:
+      name: nginx
+      state: started
+      enabled: true
