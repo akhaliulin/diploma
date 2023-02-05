@@ -5,3 +5,7 @@
 meta.txt
 ansible.cfg
 ansible.cfg~
+.terraform/
+*hcl
+*.swo
+*.swp
