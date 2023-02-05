@@ -1,0 +1,21 @@
+---
+# handlers file for roles/exporters_filebeat
+ - name: Reload daemon and restart node exporter
+   ansible.builtin.systemd: 
+     name: node_exporter
+     daemon_reload: true
+     state: restarted
+     enabled: true
+
+ - name: Reload daemon and restart nginx exporter
+   ansible.builtin.systemd: 
+     name: nginx_exporter
+     daemon_reload: true
+     state: restarted
+     enabled: true
+
+ - name: restart filebeat
+   ansible.builtin.systemd:
+     name: filebeat
+     state: restarted
+     enabled: true

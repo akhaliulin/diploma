@@ -1,0 +1,18 @@
+---
+# defaults file for roles/exporters_filebeat
+node_exporter_version: "1.5.0"
+node_exporter_user: node_exporter
+node_exporter_group: node_exporter
+node_exporter_bin: /usr/local/bin/node_exporter
+node_exporter_download_url: https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-amd64.tar.gz
+
+nginx_exporter_version: "0.11.0"
+nginx_exporter_user: nginx_exporter
+nginx_exporter_group: "{{ nginx_exporter_user }}"
+nginx_exporter_bin: /usr/local/bin/nginx-prometheus-exporter
+nginx_exporter_download_url: https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v{{ nginx_exporter_version }}/nginx-prometheus-exporter_{{ nginx_exporter_version }}_linux_amd64.tar.gz
+source_metric_address: 127.0.0.1
+
+fb_download_path: filebeat-x86_64.rpm
+fb_rpm_path: /tmp/filebeat-x86_64.rpm
+fb_conf_dir: /etc/filebeat

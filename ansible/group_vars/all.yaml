@@ -1,0 +1,19 @@
+---
+ansible_user:                 user
+ansible_ssh_private_key_file: /home/mngst/.ssh/id_rsa
+
+nginx1_public_ip:       84.252.129.81
+nginx2_public_ip:       51.250.102.184
+prometheus1_public_ip:  158.160.37.198
+grafana1_public_ip:     158.160.32.150
+elastic1_public_ip:     51.250.82.209
+kibana1_public_ip:      158.160.58.249
+bastion1_public_ip:     130.193.36.35
+
+nginx1_private_ip:      192.168.10.20
+nginx2_private_ip:      192.168.11.3
+prometheus1_private_ip: 192.168.10.31
+grafana1_private_ip:    192.168.10.18
+elastic1_private_ip:    192.168.10.32
+kibana1_private_ip:     192.168.10.13
+bastion1_private_ip:    192.168.10.9

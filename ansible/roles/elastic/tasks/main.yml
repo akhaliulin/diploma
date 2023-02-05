@@ -1,0 +1,28 @@
+---
+# tasks file for roles/elastic
+- name: copy deb packet 
+  ansible.builtin.copy:
+    src: "{{ es_download_path }}"
+    dest: "{{ es_deb_path }}"
+
+- name: install elastic
+  ansible.builtin.apt:
+    deb: "{{ es_deb_path }}"
+
+- name: create configuration
+  ansible.builtin.template:
+    src: elasticsearch.yml.j2
+    dest: "{{ es_conf_dir }}/elasticsearch.yml"
+    owner: root
+    group: elasticsearch
+    mode: 0660
+  notify: restart elasticsearch
+
+- name: start and enable elasticsearch
+  ansible.builtin.systemd:
+    name: elasticsearch
+    state: started
+    daemon_reload: true
+    enabled: true
+
+

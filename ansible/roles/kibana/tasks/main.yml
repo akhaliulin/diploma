@@ -1,0 +1,28 @@
+---
+# tasks file for roles/kibana
+
+- name: copy deb packet
+  ansible.builtin.copy:
+    src: "{{ kibana_download_path }}"
+    dest: "{{ kibana_deb_path }}"
+
+- name: install kibana 
+  ansible.builtin.apt:
+    deb: "{{ kibana_deb_path }}"
+
+- name: create configuration
+  ansible.builtin.template:
+    src: kibana.yml.j2
+    dest: "{{ kibana_conf_dir }}/kibana.yml"
+    owner: root
+    group: kibana
+    mode: 0660
+  notify: restart kibana
+
+- name: start and enable kibana
+  ansible.builtin.systemd:
+    name: kibana
+    state: started
+    enabled: true
+    daemon_reload: true
+

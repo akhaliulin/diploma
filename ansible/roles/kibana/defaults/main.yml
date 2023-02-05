@@ -1,0 +1,6 @@
+---
+# defaults file for roles/kibana
+
+kibana_download_path: kibana-8.6.1-amd64.deb
+kibana_deb_path: /tmp/kibana-8.6.1-amd64.deb
+kibana_conf_dir: /etc/kibana

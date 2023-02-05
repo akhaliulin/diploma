@@ -1,0 +1,13 @@
+---
+# handlers file for roles/prometheus
+ - name: Restart prometheus
+   ansible.builtin.systemd: 
+    daemon_reload: true
+    name: prometheus
+    state: restarted
+    enabled: true
+
+ - name: Reload prometheus
+   ansible.builtin.systemd:
+     name: prometheus
+     state: reloaded

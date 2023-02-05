@@ -1,0 +1,45 @@
+- name: gather facts
+  hosts: all
+  
+- name: configuration bastion host
+  hosts: bastion_host
+  become: yes
+
+  roles:
+   - role: bastion
+
+- name: Install nginx, exporters, filebeat
+  hosts: nginx_servers
+  become: yes
+
+  roles:
+   - role: nginx
+   - role: exporters_filebeat
+
+- name: Install prometheus
+  hosts: prometheus_servers
+  become: yes
+
+  roles: 
+   - role: prometheus
+
+- name: Install grafana
+  hosts: grafana_servers
+  become: yes
+
+  roles: 
+   - role: grafana
+     
+- name: Install elastic
+  hosts: elastic_servers
+  become: yes
+
+  roles:
+   - role: elastic
+
+- name: Install kibana
+  hosts: kibana_servers
+  become: yes
+
+  roles:
+   - role: kibana

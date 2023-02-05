@@ -1,0 +1,6 @@
+---
+# defaults file for roles/grafana
+grafana_version: 9.3.6
+grafana_download_url: https://dl.grafana.com/oss/release/grafana_{{ grafana_version }}_amd64.deb
+grafana_destination_path: /tmp/grafana_{{ grafana_version }}_amd64.deb
+

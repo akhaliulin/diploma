@@ -1,0 +1,6 @@
+*.deb
+*.rpm
+*.tfstate*
+meta.txt
+ansible.cfg
+ansible.cfg~

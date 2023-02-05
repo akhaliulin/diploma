@@ -1,0 +1,25 @@
+- name: copy deb packet
+  ansible.builtin.copy:
+    src: "{{ fb_download_path }}"
+    dest: "{{ fb_rpm_path }}"
+
+- name: install filebeat
+  ansible.builtin.yum:
+    name: "{{ fb_rpm_path }}"
+    state: present
+
+- name: create configuration
+  ansible.builtin.template:
+    src: filebeat.yml.j2
+    dest: "{{ fb_conf_dir }}/filebeat.yml"
+    owner: root
+    group: root
+    mode: 0600
+  notify: restart filebeat
+
+- name: start and enable filebeat
+  ansible.builtin.systemd:
+    name: filebeat
+    state: started
+    enabled: true
+

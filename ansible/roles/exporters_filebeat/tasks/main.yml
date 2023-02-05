@@ -1,0 +1,9 @@
+---
+ - name: Install node_exporter
+   ansible.builtin.include_tasks: node_exporter.yml
+
+ - name: Install nginx_exporter
+   ansible.builtin.include_tasks: nginx_exporter.yml
+
+ - name: Install filebeat
+   ansible.builtin.include_tasks: filebeat.yml

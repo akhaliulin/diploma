@@ -1,8 +1,0 @@
----
-# handlers file for apache
-
-- name: restart apache + enable
-  service:
-    name: apache2
-    state: restarted
-    enabled: yes

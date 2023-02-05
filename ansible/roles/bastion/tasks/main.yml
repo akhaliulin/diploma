@@ -1,0 +1,32 @@
+---
+# tasks file for roles/bastion
+
+- name: create hosts file
+  ansible.builtin.template:
+    src: hosts.j2
+    dest: /etc/hosts
+    owner: root
+    group: root
+    mode: 0644
+
+- name: copy ssh key
+  ansible.builtin.copy:
+    src: /home/mangust/.ssh/id_rsa
+    dest: /home/user/.ssh/id_rsa
+    mode: 0600
+
+- name: create password for user
+  ansible.builtin.user:
+    name: user
+    password: '$6$lT9pqGnR2DWUx$xVxThIJo9apm.JM2YnwM/MjfuhzbPWS5xSqoA7/Xf1Nmnq1s6UmCq81t3QhSbwjU5S0MqX9EGkXcSIM91INr6.'
+
+- name: enable password authentication
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^PasswordAuth'
+    line: PasswordAuthentication yes
+
+- name: restart sshd
+  ansible.builtin.systemd:
+    name: sshd
+    state: restarted

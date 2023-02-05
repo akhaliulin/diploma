@@ -1,0 +1,38 @@
+---
+ - name: Create nginx exporter user
+   ansible.builtin.user:
+     name: "{{ nginx_exporter_user }}"
+     shell: /usr/sbin/nologin
+     system: true
+     create_home: false
+
+ - name: Download and unzip exporter
+   ansible.builtin.unarchive:
+     src: "{{ nginx_exporter_download_url }}"
+     dest: /tmp/
+     remote_src: yes
+
+ - name: Move the binary file
+   ansible.builtin.copy:
+     src: "/tmp/nginx-prometheus-exporter"
+     dest: "{{ nginx_exporter_bin }}"
+     owner: "{{ nginx_exporter_user }}"
+     group: "{{ nginx_exporter_group }}"
+     mode: 0755
+     remote_src: yes
+
+ - name: Create service
+   ansible.builtin.template:
+     src: nginx_exporter.service.j2
+     dest: /etc/systemd/system/nginx_exporter.service
+     owner: root
+     group: root
+     mode: 0644
+   notify: Reload daemon and restart nginx exporter
+
+ - name: Start and enable service
+   ansible.builtin.systemd:
+     name: nginx_exporter
+     state: started
+     enabled: true
+
