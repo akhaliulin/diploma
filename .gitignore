@@ -1,6 +1,7 @@
 *.deb
 *.rpm
-*.tfstate*
+*.tfstate
+*.tfstate.backup
 meta.txt
 ansible.cfg
 ansible.cfg~
