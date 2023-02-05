@@ -15,7 +15,7 @@ resource "yandex_compute_instance" "vm-1" {
   network_interface {
     subnet_id = yandex_vpc_subnet.subnet1-zone-a.id
     nat = true
-    #    security_group_ids = [yandex_vpc_security_group.ssh.id, yandex_vpc_security_group.webservers.id]
+    security_group_ids = [yandex_vpc_security_group.ssh.id, yandex_vpc_security_group.webservers.id]
   }
   metadata = {
     user-data = "${file("./meta.txt")}"
@@ -39,7 +39,7 @@ resource "yandex_compute_instance" "vm-2" {
   network_interface {
     subnet_id = yandex_vpc_subnet.subnet1-zone-b.id
     nat = true
-    #    security_group_ids = [yandex_vpc_security_group.ssh.id, yandex_vpc_security_group.webservers.id]
+    security_group_ids = [yandex_vpc_security_group.ssh.id, yandex_vpc_security_group.webservers.id]
   }
   metadata = {
     user-data = "${file("./meta.txt")}"
@@ -63,7 +63,7 @@ resource "yandex_compute_instance" "prometheus" {
   network_interface {
     subnet_id = yandex_vpc_subnet.subnet1-zone-a.id
     nat = true
-    #    security_group_ids = [yandex_vpc_security_group.ssh.id, yandex_vpc_security_group.prometheus.id]
+    security_group_ids = [yandex_vpc_security_group.ssh.id, yandex_vpc_security_group.prometheus.id]
   }
   metadata = {
     user-data = "${file("./meta.txt")}"
@@ -86,7 +86,7 @@ resource "yandex_compute_instance" "grafana" {
   network_interface {
     subnet_id = yandex_vpc_subnet.subnet1-zone-a.id
     nat = true
-    #    security_group_ids = [yandex_vpc_security_group.ssh.id, yandex_vpc_security_group.grafana.id]
+    security_group_ids = [yandex_vpc_security_group.ssh.id, yandex_vpc_security_group.grafana.id]
   }
   metadata = {
     user-data = "${file("./meta.txt")}"
@@ -109,7 +109,7 @@ resource "yandex_compute_instance" "elastic" {
   network_interface {
     subnet_id = yandex_vpc_subnet.subnet1-zone-a.id
     nat = true
-    #    security_group_ids = [yandex_vpc_security_group.ssh.id, yandex_vpc_security_group.elastic.id]
+    security_group_ids = [yandex_vpc_security_group.ssh.id, yandex_vpc_security_group.elastic.id]
   }
   metadata = {
     user-data = "${file("./meta.txt")}"
@@ -133,7 +133,7 @@ resource "yandex_compute_instance" "kibana" {
   network_interface {
     subnet_id = yandex_vpc_subnet.subnet1-zone-a.id
     nat = true
-    #    security_group_ids = [yandex_vpc_security_group.ssh.id, yandex_vpc_security_group.kibana.id]
+    security_group_ids = [yandex_vpc_security_group.ssh.id, yandex_vpc_security_group.kibana.id]
   }
   metadata = {
     user-data = "${file("./meta.txt")}"
@@ -156,7 +156,7 @@ resource "yandex_compute_instance" "bastion" {
   network_interface {
     subnet_id = yandex_vpc_subnet.subnet1-zone-a.id
     nat = true
-    #    security_group_ids = [yandex_vpc_security_group.bastion.id]
+    security_group_ids = [yandex_vpc_security_group.bastion.id]
   }
   metadata = {
     user-data = "${file("./meta.txt")}"
